@@ -1,0 +1,45 @@
+Allison's PDF Extractor - Revision 1.1.0
+
+Major additions
+- Confidence scoring and validation for every extracted shipment.
+- Plant-count arithmetic validation, e.g. 12 x 20 = 240.
+- Sales-order, date, required-field and lot-code validation.
+- Duplicate detection against the selected Excel workbook and within the current batch.
+- Automatic timestamped Excel backups before appending to an existing workbook.
+- SQLite processing history with extraction, edits, approvals and exports.
+- New History window in the GUI.
+- New selected-record detail/review panel.
+- Open Source, Reprocess and Approve actions.
+- Template configuration moved into template_config.py for easier future templates.
+- Template B multi-table OCR remains supported: one image can create multiple rows.
+- Template B continues to use field/cell-level OCR for improved accuracy.
+- Added a Help button/window to the main GUI.
+- Added a Changelog button to the startup prompt.
+
+Files changed/new
+- main.py
+- pdf_extractor.py
+- excel_writer.py
+- history_db.py (new)
+- template_config.py (new)
+
+PyInstaller
+The new Python modules are imported normally and should be discovered automatically by PyInstaller.
+The existing portable Tesseract-OCR folder is still used the same way as before.
+
+Additional v1.1.0 refinements
+- Added clickable column sorting, including true chronological Date sorting.
+- Confidence scoring now compares record formatting with Template A conventions.
+- Template B OCR records automatically require verification and receive a confidence reduction.
+- Added a Clear All option to Processing History with a confirmation prompt.
+
+Revision 1.0.7
+- Added support for Templates A, B, and C.
+- Added automatic template detection.
+- Added Template B image OCR using Tesseract.
+- Added portable Tesseract-OCR support for compiled builds.
+- Added multi-table Template B extraction with one output row per table.
+- Improved Template B Sales Order and field recognition.
+- Preserved complete Number of Plants values, including units and case breakdowns.
+- Added PDF and image file selection support.
+- Improved GUI column sizing and portable PyInstaller compatibility.

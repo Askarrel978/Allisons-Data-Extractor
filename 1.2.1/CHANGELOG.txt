@@ -1,0 +1,81 @@
+Allison's Data Extractor - Revision 1.2.1
+
+Settings and production-safety improvements
+- Expanded Settings with Review & Accuracy, Excel & Export, Templates, History & Audit, Diagnostics, and About sections.
+- Added a Settings search box that jumps to the most relevant settings category.
+- Added Production Safety Mode for high-accuracy production use.
+- Production Safety Mode blocks export when required fields are missing.
+- Production Safety Mode requires manual approval for records below the configured Verified confidence threshold.
+- Added an optional warning before exporting records that still contain validation warnings.
+- Added configurable Excel export confirmation, automatic backups, duplicate checking, and optional opening of the output folder after export.
+- Added History & Audit preferences for manual edits, approvals, and export events.
+- Added History CSV export and Clear Processing History controls in Settings.
+- Added a read-only Templates overview showing configured templates, source type, markers, lot-code requirement, and status.
+- Backend template controls now list configured templates dynamically so future Template D/E/F entries can appear without hard-coded A/B/C-only UI.
+- Added a Diagnostics page with checks for application-data write access, settings, Excel engine, history database, Tesseract OCR, and updater availability.
+- Added Create Diagnostic Package, which creates a sanitized ZIP without shipment source files, extracted shipment records, processing history, or administrator credentials.
+- Added administrator auto-lock timeout configuration from 1 to 240 minutes.
+- Added an About page in Settings with application revision, developer information, Help, application-data folder access, and a Changelog button.
+- Existing configuration import/export, backups, administrator passcode protection, and USB/local update installation remain available under Backend / Administrator.
+
+Revision 1.2.0
+
+Major additions
+- Updated the application branding to Allison's Data Extractor across the GUI, executable, build system, settings, updater, and release packages.
+- Added automatic migration of existing local settings/history from earlier development builds into the Allison's Data Extractor application data folder.
+- Added a Settings button with a gear icon on the main window.
+- Improved the Changelog window with Segoe UI typography, styled release headings, readable bullets, and better spacing.
+- Added General, Data Formatting, OCR, and Backend / Administrator settings sections.
+- Added administrator passcode protection using a salted PBKDF2 password hash; the passcode itself is never stored.
+- Added first-run administrator passcode creation and passcode change support.
+- Administrator mode automatically locks after 15 minutes.
+- Added configurable template markers, lot-code requirements, Sales Order validation regex, and Template B record-start terms.
+- Added advanced JSON configuration editing for administrator use, including PDF label/regex rules and Template B OCR/grid terms.
+- Added Test Configuration with Sample so administrators can verify document-reading changes before deployment.
+- Added configuration import/export and automatic configuration backups.
+- Added configurable OCR confidence penalty and confidence thresholds.
+- Added Tesseract path override and a Tesseract test button.
+- Added Pack Style normalization for consistent human-readable formatting.
+- Compact pack styles such as 12x1ctClam, 12 X 1 CT clam, and 12x1ct clam normalize to 12x1ct Clam.
+- Multi-pack styles use a consistent separator and Template C multiline packaging is cleaned into readable output.
+- Pack Style aliases can be managed from Settings without rebuilding the program.
+- Added support for remembering the last selected Excel output workbook.
+- Added USB/local software update support through the administrator settings page.
+- Update packages are revision checked, SHA-256 verified, staged locally, installed after the main app exits, and the program restarts automatically.
+- Added a standalone updater helper so the running application can safely replace its own EXE and support files.
+- Added automatic pre-update installation backups in LOCALAPPDATA.
+- Added an update-package builder to create future USB update ZIP files from a compiled release.
+- Improved portable Tesseract detection to also search PyInstaller's _internal / _MEIPASS locations.
+- Suppressed noisy pdfminer FontBBox warnings that do not affect successful extraction.
+
+Important update note
+- Revision 1.2.0 is the first revision containing the in-app updater. Install 1.2.0 manually once (copy the new portable folder). Future revisions can then be loaded from a USB update ZIP through Settings > Backend / Administrator.
+
+Revision 1.1.0
+- Added confidence scoring and validation for every extracted shipment.
+- Added plant-count arithmetic validation, e.g. 12 x 20 = 240.
+- Added Sales Order, date, required-field and lot-code validation.
+- Added duplicate detection against the selected Excel workbook and within the current batch.
+- Added automatic timestamped Excel backups before appending to an existing workbook.
+- Added SQLite processing history with extraction, edits, approvals and exports.
+- Added a History window in the GUI and a Clear All option.
+- Added selected-record detail/review panel with Open Source, Reprocess and Approve actions.
+- Moved template configuration into template_config.py.
+- Template B multi-table OCR remains supported: one image can create multiple rows.
+- Template B continues to use field/cell-level OCR for improved accuracy.
+- Added Help and Changelog controls.
+- Added clickable column sorting, including chronological Date sorting.
+- Confidence scoring compares record formatting with expected conventions.
+- Template B OCR records automatically require verification and receive a confidence reduction.
+- Normalized supported dates to Month D, YYYY format.
+
+Revision 1.0.7
+- Added support for Templates A, B, and C.
+- Added automatic template detection.
+- Added Template B image OCR using Tesseract.
+- Added portable Tesseract-OCR support for compiled builds.
+- Added multi-table Template B extraction with one output row per table.
+- Improved Template B Sales Order and field recognition.
+- Preserved complete Number of Plants values, including units and case breakdowns.
+- Added PDF and image file selection support.
+- Improved GUI column sizing and portable PyInstaller compatibility.

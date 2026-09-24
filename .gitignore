@@ -1,0 +1,16 @@
+# Applies to every build folder (1.0.6, 1.0.7, ..., 1.2.1)
+
+# Python
+__pycache__/
+*.py[oc]
+.venv/
+
+# PyInstaller build outputs and release packages
+build/
+dist/
+build_updater/
+dist_updater/
+release/
+
+# Bundled Tesseract OCR (too large for GitHub; copy in locally before building)
+Tesseract-OCR/
