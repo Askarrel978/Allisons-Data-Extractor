@@ -1,0 +1,22 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Test cache and interrupted Excel saves
+.pytest_cache/
+*.saving.xlsx
+
+# Build outputs and release packages
+build_updater/
+dist_updater/
+release/
+
+# Bundled Tesseract OCR (too large for GitHub; copy in locally before building)
+Tesseract-OCR/

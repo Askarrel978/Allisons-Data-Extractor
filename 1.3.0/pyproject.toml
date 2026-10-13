@@ -1,0 +1,22 @@
+[project]
+name = "allisons-data-extractor"
+version = "1.3.0"
+description = "Extracts shipment fields from PDFs and images into an Excel workbook."
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "openpyxl>=3.1.5",
+    "pdfplumber>=0.11.10",
+    "pillow>=12.0",
+    "pytesseract>=0.3.13",
+]
+
+[dependency-groups]
+dev = [
+    "pyinstaller>=6.0",
+    "pytest>=8.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
